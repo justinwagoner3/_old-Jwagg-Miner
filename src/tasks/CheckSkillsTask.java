@@ -11,16 +11,16 @@ public class CheckSkillsTask extends TaskNode {
 
     @Override
     public boolean accept() {
-        // 30% chance to check skills
-        return Calculations.random(1,1000) <= 300;
+        // 3.3% chance to check skills
+        return Calculations.random(1,1000) <= 33;
     }
 
     @Override
     public int execute() {
         if(Tabs.getOpen() != Tab.SKILLS) {
             Tabs.open(Tab.SKILLS);
-            // 100% of the time hover the skills
-            if(Calculations.random(1,1000) >= 1){
+            // 64% of the time hover the skills
+            if(Calculations.random(1,1000) <= 640){
                 Skills.hoverSkill(Skill.MINING);
             }
             // Re-open the inventory tab after looking at skill
