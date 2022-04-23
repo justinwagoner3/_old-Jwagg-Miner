@@ -1,0 +1,31 @@
+package tasks;
+
+import org.dreambot.api.methods.Calculations;
+import org.dreambot.api.methods.skills.Skill;
+import org.dreambot.api.methods.skills.Skills;
+import org.dreambot.api.methods.tabs.Tab;
+import org.dreambot.api.methods.tabs.Tabs;
+import org.dreambot.api.script.TaskNode;
+
+public class CheckSkillsTask extends TaskNode {
+
+    @Override
+    public boolean accept() {
+        // 30% chance to check skills
+        return Calculations.random(1,1000) <= 300;
+    }
+
+    @Override
+    public int execute() {
+        if(Tabs.getOpen() != Tab.SKILLS) {
+            Tabs.open(Tab.SKILLS);
+            // 100% of the time hover the skills
+            if(Calculations.random(1,1000) >= 1){
+                Skills.hoverSkill(Skill.MINING);
+            }
+            // Re-open the inventory tab after looking at skill
+            Tabs.open(Tab.INVENTORY);
+        }
+        return Calculations.random(100,400);
+    }
+}

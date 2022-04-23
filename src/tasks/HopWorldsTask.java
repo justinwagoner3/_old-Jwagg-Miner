@@ -47,6 +47,6 @@ public class HopWorldsTask extends TaskNode {
                 Tabs.open(Tab.INVENTORY);
             }
         }
-        return Calculations.random(100,200);
+        return Calculations.random(100,400);
     }
 }

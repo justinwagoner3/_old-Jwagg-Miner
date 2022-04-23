@@ -3,10 +3,7 @@ import org.dreambot.api.methods.skills.SkillTracker;
 import org.dreambot.api.script.Category;
 import org.dreambot.api.script.ScriptManifest;
 import org.dreambot.api.script.impl.TaskScript;
-import tasks.DistractedTask;
-import tasks.DropTask;
-import tasks.HopWorldsTask;
-import tasks.MiningTask;
+import tasks.*;
 
 import java.awt.*;
 
@@ -20,7 +17,7 @@ public class Miner extends TaskScript {
         SkillTracker.start(Skill.MINING);
 
         // Now add our two tasks so the client knows what to do
-        addNodes(new HopWorldsTask(), new MiningTask(), new DropTask(), new DistractedTask());
+        addNodes(new HopWorldsTask(), new MiningTask(), new DropTask(), new DistractedTask(), new CheckSkillsTask());
     }
 
     @Override
