@@ -6,7 +6,8 @@ import org.dreambot.api.script.TaskNode;
 public class DistractedTask extends TaskNode {
     @Override
     public boolean accept() {
-        if(Calculations.random(1,100) <= 10) {
+        // 8% chance to be distracted
+        if(Calculations.random(1,100) <= 8) {
             return true;
         }
         else{
