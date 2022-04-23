@@ -11,8 +11,8 @@ public class CheckSkillsTask extends TaskNode {
 
     @Override
     public boolean accept() {
-        // 3.3% chance to check skills
-        return Calculations.random(1,1000) <= 33;
+        // 2.3% chance to check skills
+        return Calculations.random(1,1000) <= 23;
     }
 
     @Override
