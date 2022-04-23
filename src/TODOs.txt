@@ -1,6 +1,6 @@
  * Add "hover" over the next rock to mine
  * Add GUI for user to choose what rock they want to mine
- * Add checking of skills randomly
+ * ~~Add checking of skills randomly
  * ~~Add world hopping after someone occupies space for longer than certain amount of time
  * ~~Add random sleeps
   * ~~Think to have sleeping as a task, and its execution is based off random number generation and happens 5-10% of the
@@ -9,3 +9,4 @@
  * add time ran to gui
  * revamp gui with art
  * pause when clicking on rock when gaining level
+ * want to sometimes try to mine an ore even with a full inventory
