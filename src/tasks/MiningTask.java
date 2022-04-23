@@ -25,7 +25,7 @@ public class MiningTask extends TaskNode {
         if (rock == null) return Calculations.random(500, 1000);
 
         if (rock.interact("Mine")) { // If we successfully click on the rock
-            sleepUntil(this::isMining, Calculations.random(100, 5000)); // Wait until we're mining, with a max wait time
+            sleepUntil(this::isMining, Calculations.random(300, 1000)); // Wait until we're mining, with a max wait time
         }
 
         return Calculations.random(200, 500);
