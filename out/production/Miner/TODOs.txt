@@ -4,6 +4,9 @@
  * add `time ran` to gui
  * revamp gui with art
  * hop world incrementally instead of randomly
+ * after world switch, hover over player to "check" for another player
+ * create a memory of which rock is being mined to prevent double clicks
+
 
 
 === Consider

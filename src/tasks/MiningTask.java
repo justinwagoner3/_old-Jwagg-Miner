@@ -52,7 +52,7 @@ public class MiningTask extends TaskNode {
                 extraSleep = false;
             }
             else {
-                sleepUntil(this::isMining, Calculations.random(100, 2500)); // Wait until we're mining, with a max wait time
+                sleepUntil(this::isMining, Calculations.random(1500, 5000)); // Wait until we're mining, with a max wait time
             }
         }
 
@@ -69,7 +69,7 @@ public class MiningTask extends TaskNode {
     }
 
     private boolean isMining() {
-        return getLocalPlayer().isAnimating() || getLocalPlayer().isMoving();
+        return getLocalPlayer().isAnimating();
     }
 
 }
