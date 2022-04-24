@@ -23,7 +23,7 @@ public class MiningTask extends TaskNode {
         // part of the time, still attempt to mine with a full inv
         else if(Inventory.isFull()){
             // if you did not just try to drop with full inventory, and hit probably to try it, try to mine
-            if(!justMinedWithFullInventory && Calculations.random(1,1000) >= 1) {
+            if(!justMinedWithFullInventory && Calculations.random(1,1000) >= 500) {
                 justMinedWithFullInventory = true;
                 extraSleep = true;
                 return true;
