@@ -1,3 +1,3 @@
- * Mining with full inv: will click mine and then instantly start dropping inventory
-  * happening bc of having the chance to double click implemented i think
-  * would be nice for this to happen some of the time but not every time
+ * ~~Mining with full inv: will click mine and then instantly start dropping inventory
+  * ~~happening bc of having the chance to double click implemented i think
+  * ~~would be nice for this to happen some of the time but not every time

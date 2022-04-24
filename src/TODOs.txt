@@ -11,4 +11,4 @@
  * pause when clicking on rock when gaining level
  * want to sometimes try to mine an ore even with a full inventory
   * could implement part of the time leaving the skills tab open, and this would be when you try mining with full inv
- * skills tabs gets left open sometimes
+ * ~~skills tabs gets left open sometimes

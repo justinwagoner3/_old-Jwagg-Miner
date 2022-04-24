@@ -22,6 +22,7 @@ public class CheckSkillsTask extends TaskNode {
             // 64% of the time hover the skills
             if(Calculations.random(1,1000) <= 640){
                 Skills.hoverSkill(Skill.MINING);
+                sleep(Calculations.random(100,400));
             }
             else{
                 sleep(Calculations.random(2000,4000));
