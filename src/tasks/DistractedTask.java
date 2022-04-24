@@ -8,6 +8,7 @@ public class DistractedTask extends TaskNode {
     public boolean accept() {
         // 8% chance to be distracted
         if(Calculations.random(1,100) <= 8) {
+            log("Distracted");
             return true;
         }
         else{
