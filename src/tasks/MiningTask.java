@@ -56,7 +56,7 @@ public class MiningTask extends TaskNode {
             }
         }
 
-        return Calculations.random(100,300);
+        return Calculations.random(50,250);
     }
 
     private GameObject getClosestRock() {
