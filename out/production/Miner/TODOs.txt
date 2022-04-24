@@ -4,7 +4,6 @@
  * add `time ran` to gui
  * revamp gui with art
  * hop world incrementally instead of randomly
- * decrease area to hop world
 
 
 === Consider
@@ -16,7 +15,7 @@
  * ~~Add checking of skills randomly
  * ~~Add world hopping after someone occupies space for longer than certain amount of time
  * ~~Add random sleeps
-  * ~~Think to have sleeping as a task, and its execution is based off random number generation and happens 5-10%
-    ~~of the time
+  * ~~Think to have sleeping as a task, and its execution is based off random number generation and happens 5-10% of the time
  * ~~add current level and levels gained to gui
  * ~~skills tabs gets left open sometimes
+ * ~~decrease area to hop world
