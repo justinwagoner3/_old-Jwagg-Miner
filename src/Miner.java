@@ -8,7 +8,7 @@ import tasks.*;
 import java.awt.*;
 
 // Every script needs a ScriptManifest so it can be seen in the script manager
-@ScriptManifest(category = Category.MINING, name = "Miner", description = "Mines anything, and drops inventory when full.", author = "Jwagg", version = 1.0)
+@ScriptManifest(category = Category.MINING, name = "Miner", description = "Mines anything, and drops inventory when full.", author = "Jwagg", version = 1.1)
 public class Miner extends TaskScript {
 
     @Override
