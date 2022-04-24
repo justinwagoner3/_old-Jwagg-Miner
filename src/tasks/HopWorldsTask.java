@@ -14,7 +14,7 @@ import org.dreambot.api.wrappers.interactive.Player;
 public class HopWorldsTask extends TaskNode {
 
     private final Area ironOreAreaLovakengj = new Area(1474, 3778, 1475, 3780);
-    private final Area ironOreAreaMiningGuild = new Area(3032, 9737, 3034, 9739);
+    private final Area ironOreAreaMiningGuild = new Area(3028, 9720, 3030, 9721);
 
     @Override
     public boolean accept() {
