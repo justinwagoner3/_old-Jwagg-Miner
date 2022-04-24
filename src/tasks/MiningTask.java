@@ -60,7 +60,12 @@ public class MiningTask extends TaskNode {
     }
 
     private GameObject getClosestRock() {
-        return GameObjects.closest(object -> object.getName().equalsIgnoreCase("Rocks") && object.hasAction("Mine") && object.getModelColors() != null && object.getModelColors()[0] == ironOre);
+        return GameObjects.closest(object ->
+                object.getName().equalsIgnoreCase("Rocks") &&
+                        object.hasAction("Mine") &&
+                        object.getModelColors() != null &&
+                        object.getModelColors()[0] == ironOre &&
+                object.distance() <= 2);
     }
 
     private boolean isMining() {

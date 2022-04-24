@@ -13,7 +13,7 @@ import org.dreambot.api.wrappers.interactive.Player;
 
 public class HopWorldsTask extends TaskNode {
 
-    private final Area ironOreAreaEastVarrock = new Area(3295, 3309, 3296, 3311);
+    private final Area ironOreAreaEastVarrock = new Area(1474, 3778, 1475, 3780);
 
     @Override
     public boolean accept() {
@@ -37,7 +37,7 @@ public class HopWorldsTask extends TaskNode {
     @Override
     public int execute() {
         // F2P, no level requirement, no PVP world
-        World world = Worlds.getRandomWorld(w -> w.isF2P() && !w.isPVP() && w.getMinimumLevel() == 0);
+        World world = Worlds.getRandomWorld(w -> w.isMembers() && !w.isPVP() && w.getMinimumLevel() == 0);
 
         WorldHopper.hopWorld(world);
         sleep(Calculations.random(5000,7000));
