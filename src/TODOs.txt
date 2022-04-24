@@ -10,3 +10,4 @@
  * revamp gui with art
  * pause when clicking on rock when gaining level
  * want to sometimes try to mine an ore even with a full inventory
+ * skills tabs gets left open sometimes

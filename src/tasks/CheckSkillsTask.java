@@ -27,7 +27,9 @@ public class CheckSkillsTask extends TaskNode {
                 sleep(Calculations.random(2000,4000));
             }
             // Re-open the inventory tab after looking at skill
-            Tabs.open(Tab.INVENTORY);
+            if(!Tabs.open(Tab.INVENTORY)){
+                Tabs.open(Tab.INVENTORY);
+            }
         }
         return Calculations.random(100,400);
     }
