@@ -4,7 +4,6 @@
  * add `time ran` to gui
  * revamp gui with art
  * hop world incrementally instead of randomly
- * decrease area to hop world
 
 
 === Consider
@@ -20,3 +19,4 @@
     ~~of the time
  * ~~add current level and levels gained to gui
  * ~~skills tabs gets left open sometimes
+ * ~~decrease area to hop world
