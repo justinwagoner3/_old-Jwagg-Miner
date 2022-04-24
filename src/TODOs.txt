@@ -1,9 +1,10 @@
 === Active
  * Add "hover" over the next rock to mine
  * Add GUI for user to choose what rock they want to mine
- * add time ran to gui
+ * add `time ran` to gui
  * revamp gui with art
- * pause when clicking on rock when gaining level
+ * hop world incrementally instead of randomly
+ * decrease area to hop world
 
 
 === Consider

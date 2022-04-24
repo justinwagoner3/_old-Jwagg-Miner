@@ -1,14 +1,22 @@
+=== Active
  * Add "hover" over the next rock to mine
  * Add GUI for user to choose what rock they want to mine
+ * add `time ran` to gui
+ * revamp gui with art
+ * hop world incrementally instead of randomly
+ * decrease area to hop world
+
+
+=== Consider
+ * ~~want to sometimes try to mine an ore even with a full inventory
+  * could implement part of the time leaving the skills tab open, and this would be when you try mining with full inv
+
+
+=== Completed
  * ~~Add checking of skills randomly
  * ~~Add world hopping after someone occupies space for longer than certain amount of time
  * ~~Add random sleeps
   * ~~Think to have sleeping as a task, and its execution is based off random number generation and happens 5-10%
-    of the time
+    ~~of the time
  * ~~add current level and levels gained to gui
- * add time ran to gui
- * revamp gui with art
- * pause when clicking on rock when gaining level
- * want to sometimes try to mine an ore even with a full inventory
-  * could implement part of the time leaving the skills tab open, and this would be when you try mining with full inv
  * ~~skills tabs gets left open sometimes
