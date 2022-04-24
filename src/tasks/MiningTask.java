@@ -8,8 +8,10 @@ import org.dreambot.api.wrappers.interactive.GameObject;
 
 public class MiningTask extends TaskNode {
 
-    private short copperOre = 4645;
-    private short ironOre = 2576;
+    private final short copperOre = 4645;
+    private final short ironOre = 2576;
+
+    private boolean justMinedWithFullInventory = false;
 
     @Override
     public boolean accept() {
@@ -18,8 +20,17 @@ public class MiningTask extends TaskNode {
             return true;
         }
         // part of the time, still attempt to mine with a full inv
-        else if(Inventory.isFull() && Calculations.random(1,1000) >= 500){
-            return true;
+        else if(Inventory.isFull()){
+            // if you did not just try to drop with full inventory, and hit probably to try it, try to mine
+            if(!justMinedWithFullInventory && Calculations.random(1,1000) >= 500) {
+                justMinedWithFullInventory = true;
+                return true;
+            }
+            // don't mine, reset state
+            else {
+                justMinedWithFullInventory = false;
+                return false;
+            }
         }
         else{
             return false;
