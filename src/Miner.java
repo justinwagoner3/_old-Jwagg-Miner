@@ -17,7 +17,12 @@ public class Miner extends TaskScript {
         SkillTracker.start(Skill.MINING);
 
         // Now add our two tasks so the client knows what to do
-        addNodes(new HopWorldsTask(), new MiningTask(), new DropTask(), new DistractedTask(), new CheckSkillsTask());
+        addNodes(new HopWorldsTask(),
+                new MiningTask(),
+                new DropTask(),
+                new DistractedTask(),
+                new CheckSkillsTask()
+        );
     }
 
     @Override

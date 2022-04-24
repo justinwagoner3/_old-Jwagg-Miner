@@ -14,7 +14,16 @@ public class MiningTask extends TaskNode {
     @Override
     public boolean accept() {
         // If our inventory isn't full and we're not mining, we should start
-        return !Inventory.isFull() && !isMining();
+        if(!isMining() && !Inventory.isFull()){
+            return true;
+        }
+        // part of the time, still attempt to mine with a full inv
+        else if(Inventory.isFull() && Calculations.random(1,1000) >= 500){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
