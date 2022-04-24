@@ -13,15 +13,16 @@ import org.dreambot.api.wrappers.interactive.Player;
 
 public class HopWorldsTask extends TaskNode {
 
-    private final Area ironOreAreaEastVarrock = new Area(1474, 3778, 1475, 3780);
+    private final Area ironOreAreaLovakengj = new Area(1474, 3778, 1475, 3780);
+    private final Area ironOreAreaMiningGuild = new Area(3032, 9737, 3034, 9739);
 
     @Override
     public boolean accept() {
         //search for a player using closest method and a lambda expression. First, make sure the player isn't your own player. Then check if it's in the area.
-        Player player = Players.closest(p -> p != null && !p.equals(getLocalPlayer()) && ironOreAreaEastVarrock.contains(p));
+        Player player = Players.closest(p -> p != null && !p.equals(getLocalPlayer()) && ironOreAreaMiningGuild.contains(p));
         if (player != null) {
             sleep(Calculations.random(7000,10000));
-            Player player2 = Players.closest(p -> p != null && !p.equals(getLocalPlayer()) && ironOreAreaEastVarrock.contains(p));
+            Player player2 = Players.closest(p -> p != null && !p.equals(getLocalPlayer()) && ironOreAreaMiningGuild.contains(p));
             if (player2 != null) {
                 return true;
             }
@@ -41,7 +42,7 @@ public class HopWorldsTask extends TaskNode {
 
         WorldHopper.hopWorld(world);
         sleep(Calculations.random(5000,7000));
-        Player player = Players.closest(p -> p != null && !p.equals(getLocalPlayer()) && ironOreAreaEastVarrock.contains(p));
+        Player player = Players.closest(p -> p != null && !p.equals(getLocalPlayer()) && ironOreAreaMiningGuild.contains(p));
         if (player == null) {
             if(Tabs.getOpen() != Tab.INVENTORY) {
                 Tabs.open(Tab.INVENTORY);
