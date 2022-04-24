@@ -12,6 +12,7 @@ public class MiningTask extends TaskNode {
     private final short ironOre = 2576;
 
     private boolean justMinedWithFullInventory = false;
+    private boolean extraSleep = false;
 
     @Override
     public boolean accept() {
@@ -22,8 +23,9 @@ public class MiningTask extends TaskNode {
         // part of the time, still attempt to mine with a full inv
         else if(Inventory.isFull()){
             // if you did not just try to drop with full inventory, and hit probably to try it, try to mine
-            if(!justMinedWithFullInventory && Calculations.random(1,1000) >= 500) {
+            if(!justMinedWithFullInventory && Calculations.random(1,1000) >= 1) {
                 justMinedWithFullInventory = true;
+                extraSleep = true;
                 return true;
             }
             // don't mine, reset state
@@ -45,7 +47,13 @@ public class MiningTask extends TaskNode {
         if (rock == null) return Calculations.random(500, 1000);
 
         if (rock.interact("Mine")) { // If we successfully click on the rock
-            sleepUntil(this::isMining, Calculations.random(100, 2500)); // Wait until we're mining, with a max wait time
+            if(extraSleep){
+                sleep(Calculations.random(500,4000));
+                extraSleep = false;
+            }
+            else {
+                sleepUntil(this::isMining, Calculations.random(100, 2500)); // Wait until we're mining, with a max wait time
+            }
         }
 
         return Calculations.random(200, 500);
