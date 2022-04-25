@@ -3,6 +3,7 @@ package tasks;
 import org.dreambot.api.methods.Calculations;
 import org.dreambot.api.methods.container.impl.Inventory;
 import org.dreambot.api.methods.interactive.GameObjects;
+import org.dreambot.api.methods.map.Tile;
 import org.dreambot.api.script.TaskNode;
 import org.dreambot.api.wrappers.interactive.GameObject;
 
@@ -14,10 +15,13 @@ public class MiningTask extends TaskNode {
     private boolean justMinedWithFullInventory = false;
     private boolean extraSleep = false;
 
+    private GameObject rock = null;
+    private Tile rockTile = null;
+
     @Override
     public boolean accept() {
         // If our inventory isn't full and we're not mining, we should start
-        if(!isMining() && !Inventory.isFull()){
+        if(!Inventory.isFull()){
             return true;
         }
         // part of the time, still attempt to mine with a full inv
@@ -41,7 +45,8 @@ public class MiningTask extends TaskNode {
 
     @Override
     public int execute() {
-        GameObject rock = getClosestRock();
+        rock = getClosestRock();
+        rockTile = rock.getTile();
 
         // If there aren't any available rocks near us, we should just wait until one's available
         if (rock == null) return Calculations.random(500, 1000);
@@ -52,7 +57,9 @@ public class MiningTask extends TaskNode {
                 extraSleep = false;
             }
             else {
-                sleepUntil(this::isMining, Calculations.random(1500, 5000)); // Wait until we're mining, with a max wait time
+                //sleepUntil(this::isMining, Calculations.random(1500, 5000)); // Wait until we're mining, with a max wait time
+
+                sleepUntil(this::rockIsMined, Calculations.random(4000,5000));
             }
         }
 
@@ -68,8 +75,13 @@ public class MiningTask extends TaskNode {
                 object.distance() <= 2);
     }
 
-    private boolean isMining() {
-        return getLocalPlayer().isAnimating();
+    private GameObject getMinedRock() {
+        return GameObjects.getTopObjectOnTile(rockTile);
+    }
+
+    private boolean rockIsMined(){
+        GameObject minedRock = getMinedRock();
+        return minedRock.getModelColors() == null;
     }
 
 }
