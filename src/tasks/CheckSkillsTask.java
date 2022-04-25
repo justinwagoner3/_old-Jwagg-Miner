@@ -17,6 +17,7 @@ public class CheckSkillsTask extends TaskNode {
 
     @Override
     public int execute() {
+        log("Checked Skills");
         if(Tabs.getOpen() != Tab.SKILLS) {
             Tabs.open(Tab.SKILLS);
             // 64% of the time hover the skills

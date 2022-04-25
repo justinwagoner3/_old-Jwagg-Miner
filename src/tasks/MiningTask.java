@@ -57,9 +57,7 @@ public class MiningTask extends TaskNode {
                 extraSleep = false;
             }
             else {
-                //sleepUntil(this::isMining, Calculations.random(1500, 5000)); // Wait until we're mining, with a max wait time
-
-                sleepUntil(this::rockIsMined, Calculations.random(4000,5000));
+                sleepUntil(this::rockIsMined, Calculations.random(1000,5000));
             }
         }
 
