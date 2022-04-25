@@ -6,7 +6,6 @@ import org.dreambot.api.script.impl.TaskScript;
 import tasks.*;
 
 import java.awt.*;
-import java.util.Timer;
 
 // Every script needs a ScriptManifest so it can be seen in the script manager
 @ScriptManifest(category = Category.MINING,
@@ -40,7 +39,7 @@ public class Miner extends TaskScript {
     @Override
     public void onPaint(Graphics g) {
         String experienceGainedText = String.format(
-                "Mining Experience: %d (%d per hour)", // The paint's text format. '%d' will be replaced with the next two arguments.
+                "Mining Experience: %d (%d per hour)",
                 SkillTracker.getGainedExperience(Skill.MINING),
                 SkillTracker.getGainedExperiencePerHour(Skill.MINING)
         );
@@ -49,6 +48,7 @@ public class Miner extends TaskScript {
                 SkillTracker.getStartLevel(Skill.MINING)+SkillTracker.getGainedLevels(Skill.MINING),
                 SkillTracker.getGainedLevels(Skill.MINING)
         );
+
         long ms = time.getElapsedTime();
         long hours = ms / 3600000;
         ms = ms % 3600000;
@@ -61,10 +61,24 @@ public class Miner extends TaskScript {
                 minutes,
                 seconds
         );
+        long ms2 = SkillTracker.getTimeToLevel(Skill.MINING);
+        long hours2 = ms2 / 3600000;
+        ms2 = ms2 % 3600000;
+        long minutes2 = ms2 / 60000;
+        ms2 = ms2 % 60000;
+        long seconds2 = ms2 / 1000;
+
+        String timeToLevel = String.format(
+                "Time to next level: %d:%d:%d",
+                hours2,
+                minutes2,
+                seconds2
+        );
         // Now we'll draw the text on the canvas at (5, 35). (0, 0) is the top left of the canvas.
-        g.drawString(elapsedTime, 5, 305);
-        g.drawString(experienceGainedText, 5, 320);
-        g.drawString(miningLevelText, 5, 335);
+        g.drawString(elapsedTime, 5, 290);
+        g.drawString(experienceGainedText, 5, 305);
+        g.drawString(miningLevelText, 5, 320);
+        g.drawString(timeToLevel, 5, 335);
 
     }
 

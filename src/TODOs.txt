@@ -5,6 +5,7 @@
  * revamp gui with art
  * hop world incrementally instead of randomly
  * after world switch, hover over player to "check" for another player
+ * write a specific circle loop for mining guild so it doesn't skip one of the rocks always
 
 
 === Consider

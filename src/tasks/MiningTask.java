@@ -8,6 +8,8 @@ import org.dreambot.api.methods.map.Tile;
 import org.dreambot.api.script.TaskNode;
 import org.dreambot.api.wrappers.interactive.GameObject;
 
+import java.util.List;
+
 public class MiningTask extends TaskNode {
 
     private final short copperOre = 4645;
@@ -15,10 +17,11 @@ public class MiningTask extends TaskNode {
 
     private boolean justMinedWithFullInventory = false;
     private boolean extraSleep = false;
+    private boolean firstIteration = true;
 
     private GameObject rock = null;
+    private GameObject nextRock = null;
     private Tile rockTile = null;
-    private Tile nextTile = null;
 
     @Override
     public boolean accept() {
@@ -47,6 +50,22 @@ public class MiningTask extends TaskNode {
 
     @Override
     public int execute() {
+        /*
+        log("start");
+        if(rock != null) {
+            log(rock.getTile());
+        }
+        if(nextRock != null){
+            log(nextRock.getTile());
+        }
+        if(firstIteration) {
+            rock = getClosestRock();
+        }
+        else{
+            rock = null;
+            rock = nextRock;
+        }
+         */
         rock = getClosestRock();
         rockTile = rock.getTile();
 
@@ -59,8 +78,11 @@ public class MiningTask extends TaskNode {
                 extraSleep = false;
             }
             else {
-                nextTile = getNextRock().getTile();
-                Mouse.move(nextTile);
+                //nextRock = getNextRock();
+                //log("inner");
+                //log(rock.getTile());
+                //log(nextRock.getTile());
+                //Mouse.move(nextRock.getTile());
                 sleepUntil(this::rockIsMined, Calculations.random(1000,5000));
             }
         }
@@ -70,13 +92,12 @@ public class MiningTask extends TaskNode {
 
     private GameObject getClosestRock() {
         return GameObjects.closest(object ->
-                object.getName().equalsIgnoreCase("Rocks") &&
-                        object.hasAction("Mine") &&
                         object.getModelColors() != null &&
                         object.getModelColors()[0] == ironOre &&
-                object.distance() <= 2);
+                object.distance() <= 3);
     }
 
+    // Get the rock that was just mined; need this because have to constantly query the rock in a sleepUntil
     private GameObject getMinedRock() {
         return GameObjects.getTopObjectOnTile(rockTile);
     }
@@ -92,7 +113,7 @@ public class MiningTask extends TaskNode {
                         object.hasAction("Mine") &&
                         object.getModelColors() != null &&
                         object.getModelColors()[0] == ironOre &&
-                        object.distance() <= 2 &&
+                        object.distance() <= 3 &&
                         object.getTile() != rockTile);
     }
 
