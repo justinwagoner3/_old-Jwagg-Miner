@@ -70,7 +70,7 @@ public class MiningTask extends TaskNode {
         rockTile = rock.getTile();
 
         // If there aren't any available rocks near us, we should just wait until one's available
-        if (rock == null) return Calculations.random(500, 1000);
+        if (rock == null) return Calculations.random(100, 300);
 
         if (rock.interact("Mine")) { // If we successfully click on the rock
             if(extraSleep){
@@ -87,7 +87,7 @@ public class MiningTask extends TaskNode {
             }
         }
 
-        return Calculations.random(50,250);
+        return Calculations.random(0,100);
     }
 
     private GameObject getClosestRock() {
@@ -116,5 +116,4 @@ public class MiningTask extends TaskNode {
                         object.distance() <= 3 &&
                         object.getTile() != rockTile);
     }
-
 }

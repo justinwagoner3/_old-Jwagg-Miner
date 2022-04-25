@@ -69,7 +69,7 @@ public class Miner extends TaskScript {
         long seconds2 = ms2 / 1000;
 
         String timeToLevel = String.format(
-                "Time to next level: %d:%d:%d",
+                "Time To Next Level: %d:%d:%d",
                 hours2,
                 minutes2,
                 seconds2
