@@ -5,8 +5,6 @@
  * revamp gui with art
  * hop world incrementally instead of randomly
  * after world switch, hover over player to "check" for another player
- * create a memory of which rock is being mined to prevent double clicks
-
 
 
 === Consider
@@ -22,3 +20,4 @@
  * ~~add current level and levels gained to gui
  * ~~skills tabs gets left open sometimes
  * ~~decrease area to hop world
+ * ~~create a memory of which rock is being mined to prevent double clicks

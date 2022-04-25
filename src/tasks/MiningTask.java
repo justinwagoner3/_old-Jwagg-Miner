@@ -1,5 +1,6 @@
 package tasks;
 
+import org.dreambot.api.input.Mouse;
 import org.dreambot.api.methods.Calculations;
 import org.dreambot.api.methods.container.impl.Inventory;
 import org.dreambot.api.methods.interactive.GameObjects;
@@ -17,6 +18,7 @@ public class MiningTask extends TaskNode {
 
     private GameObject rock = null;
     private Tile rockTile = null;
+    private Tile nextTile = null;
 
     @Override
     public boolean accept() {
@@ -26,7 +28,7 @@ public class MiningTask extends TaskNode {
         }
         // part of the time, still attempt to mine with a full inv
         else if(Inventory.isFull()){
-            // if you did not just try to drop with full inventory, and hit probably to try it, try to mine
+            // if you did not just try to drop with full inventory, and hit probability to try it, try to mine
             if(!justMinedWithFullInventory && Calculations.random(1,1000) >= 500) {
                 justMinedWithFullInventory = true;
                 extraSleep = true;
@@ -53,10 +55,12 @@ public class MiningTask extends TaskNode {
 
         if (rock.interact("Mine")) { // If we successfully click on the rock
             if(extraSleep){
-                sleep(Calculations.random(500,4000));
+                sleep(Calculations.random(500,1500));
                 extraSleep = false;
             }
             else {
+                nextTile = getNextRock().getTile();
+                Mouse.move(nextTile);
                 sleepUntil(this::rockIsMined, Calculations.random(1000,5000));
             }
         }
@@ -80,6 +84,16 @@ public class MiningTask extends TaskNode {
     private boolean rockIsMined(){
         GameObject minedRock = getMinedRock();
         return minedRock.getModelColors() == null;
+    }
+
+    private GameObject getNextRock(){
+        return GameObjects.closest(object ->
+                object.getName().equalsIgnoreCase("Rocks") &&
+                        object.hasAction("Mine") &&
+                        object.getModelColors() != null &&
+                        object.getModelColors()[0] == ironOre &&
+                        object.distance() <= 2 &&
+                        object.getTile() != rockTile);
     }
 
 }
