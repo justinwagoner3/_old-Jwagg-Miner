@@ -30,10 +30,10 @@ public class Miner extends TaskScript {
 
         // Now add our two tasks so the client knows what to do
         addNodes(new HopWorldsTask(),
-                new MiningTask(),
-                new DropTask(),
                 new DistractedTask(),
-                new CheckSkillsTask()
+                new CheckSkillsTask(),
+                new MiningTask(),
+                new DropTask()
         );
     }
 
