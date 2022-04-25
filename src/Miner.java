@@ -13,7 +13,7 @@ import java.util.Timer;
         name = "Miner",
         description = "Mines anything, and drops inventory when full.",
         author = "Jwagg",
-        version = 1.1)
+        version = 1.2)
 
 public class Miner extends TaskScript {
 
