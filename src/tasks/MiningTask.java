@@ -15,10 +15,10 @@ public class MiningTask extends TaskNode {
 
     private boolean justMinedWithFullInventory = false;
     private boolean extraSleep = false;
+    private boolean firstIteration = true;
 
-    private GameObject rock = null;
-    private Tile rockTile = null;
-    private Tile nextTile = null;
+    private GameObject curRock = null;
+    private GameObject nextRock = null;
 
     @Override
     public boolean accept() {
@@ -47,20 +47,28 @@ public class MiningTask extends TaskNode {
 
     @Override
     public int execute() {
-        rock = getClosestRock();
-        rockTile = rock.getTile();
+        log("Mining");
+
+        if(firstIteration){
+            curRock = getClosestRock();
+            firstIteration = false;
+        }
+        else{
+            curRock = nextRock;
+            log(curRock);
+        }
 
         // If there aren't any available rocks near us, we should just wait until one's available
-        if (rock == null) return Calculations.random(500, 1000);
+        if (curRock == null) return Calculations.random(500, 1000);
 
-        if (rock.interact("Mine")) { // If we successfully click on the rock
+        if (curRock.interact("Mine")) { // If we successfully click on the rock
             if(extraSleep){
                 sleep(Calculations.random(500,1500));
                 extraSleep = false;
             }
             else {
-                nextTile = getNextRock().getTile();
-                Mouse.move(nextTile);
+                nextRock = getNextRock();
+                Mouse.move(nextRock.getTile());
                 sleepUntil(this::rockIsMined, Calculations.random(1000,5000));
             }
         }
@@ -78,7 +86,7 @@ public class MiningTask extends TaskNode {
     }
 
     private GameObject getMinedRock() {
-        return GameObjects.getTopObjectOnTile(rockTile);
+        return GameObjects.getTopObjectOnTile(curRock.getTile());
     }
 
     private boolean rockIsMined(){
@@ -93,7 +101,6 @@ public class MiningTask extends TaskNode {
                         object.getModelColors() != null &&
                         object.getModelColors()[0] == ironOre &&
                         object.distance() <= 2 &&
-                        object.getTile() != rockTile);
+                        object.getTile() != curRock.getTile());
     }
-
 }
